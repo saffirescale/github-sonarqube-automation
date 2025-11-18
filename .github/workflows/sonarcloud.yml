@@ -43,6 +43,6 @@ jobs:
             <p><b>Status:</b> ${{ job.status }}</p>
             <br />
             <p><b>View SonarCloud Report:</b></p>
-            <p><a href="https://sonarcloud.io/project/overview?id=<your_project_key>">
+            <p><a href="https://sonarcloud.io/project/overview?id=saffirescale_github-sonarqube-automation">
               🔗 Open SonarCloud Dashboard
             </a></p>
