@@ -24,3 +24,25 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: "SonarCloud Scan Result - ${{ github.repository }}"
+          to: ${{ secrets.MAIL_TO }}
+          from: "GitHub Actions <${{ secrets.SMTP_USER }}>"
+          html_body: |
+            <h2>SonarCloud Analysis Completed</h2>
+            <p><b>Repository:</b> ${{ github.repository }}</p>
+            <p><b>Branch:</b> ${{ github.ref_name }}</p>
+            <p><b>Commit:</b> ${{ github.sha }}</p>
+            <p><b>Status:</b> ${{ job.status }}</p>
+            <br />
+            <p><b>View SonarCloud Report:</b></p>
+            <p><a href="https://sonarcloud.io/project/overview?id=<your_project_key>">
+              🔗 Open SonarCloud Dashboard
+            </a></p>

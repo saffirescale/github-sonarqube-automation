@@ -1,5 +1,4 @@
-print('Hello from SonarCloud setup sample!')
-
+print('Hello from updated SonarCloud project with email notification!')
 def add(a, b):
     return a + b
 
